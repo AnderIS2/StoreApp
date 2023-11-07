@@ -1,46 +1,50 @@
-
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { AppRoutes } from './app.routing';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { FullComponent } from './layouts/full/full.component';
-import { AppHeaderComponent } from './layouts/full/header/header.component';
-import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DemoMaterialModule } from './demo-material-module';
+// icons
+import { TablerIconsModule } from 'angular-tabler-icons';
+import * as TablerIcons from 'angular-tabler-icons/icons';
 
-import { SharedModule } from './shared/shared.module';
-import { SpinnerComponent } from './shared/spinner.component';
+//Import all material modules
+import { MaterialModule } from './material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+//Import Layouts
+import { FullComponent } from './layouts/full/full.component';
+import { BlankComponent } from './layouts/blank/blank.component';
+
+// Vertical Layout
+import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
+import { HeaderComponent } from './layouts/full/header/header.component';
+import { BrandingComponent } from './layouts/full/sidebar/branding.component';
+import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent,
-    AppHeaderComponent,
-    SpinnerComponent,
-    
+    BlankComponent,
+    SidebarComponent,
+    HeaderComponent,
+    BrandingComponent,
+    AppNavItemComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    DemoMaterialModule,
-    FormsModule,
+    AppRoutingModule,
     HttpClientModule,
-    SharedModule,
-    RouterModule.forRoot(AppRoutes),
-    AppSidebarComponent
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    TablerIconsModule.pick(TablerIcons),
   ],
-  providers: [
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    }
-  ],
-  bootstrap: [AppComponent]
+  exports: [TablerIconsModule],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

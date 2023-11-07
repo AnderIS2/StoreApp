@@ -1,31 +1,61 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component,OnDestroy,AfterViewInit} from '@angular/core';
-import { MenuItems } from '../../shared/menu-items/menu-items';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MatSidenav } from '@angular/material/sidenav';
 
+const MOBILE_VIEW = 'screen and (max-width: 768px)';
+const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
+const MONITOR_VIEW = 'screen and (min-width: 1024px)';
 
-/** @title Responsive sidenav */
 @Component({
-  selector: 'app-full-layout',
-  templateUrl: 'full.component.html',
-  styleUrls: []
+  selector: 'app-full',
+  templateUrl: './full.component.html',
+  styleUrls: [],
 })
-export class FullComponent implements OnDestroy, AfterViewInit {
-  mobileQuery: MediaQueryList;
+export class FullComponent implements OnInit {
 
-  private _mobileQueryListener: () => void;
+  @ViewChild('leftsidenav')
+  public sidenav: MatSidenav;
 
-  constructor(
-    changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher,
-    public menuItems: MenuItems
-  ) {
-    this.mobileQuery = media.matchMedia('(min-width: 1024px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+  //get options from service
+  private layoutChangesSubscription = Subscription.EMPTY;
+  private isMobileScreen = false;
+  private isContentWidthFixed = true;
+  private isCollapsedWidthFixed = false;
+  private htmlElement!: HTMLHtmlElement;
+
+  get isOver(): boolean {
+    return this.isMobileScreen;
   }
 
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.htmlElement = document.querySelector('html')!;
+    this.layoutChangesSubscription = this.breakpointObserver
+      .observe([MOBILE_VIEW, TABLET_VIEW, MONITOR_VIEW])
+      .subscribe((state) => {
+        // SidenavOpened must be reset true when layout changes
+
+        this.isMobileScreen = state.breakpoints[MOBILE_VIEW];
+
+        this.isContentWidthFixed = state.breakpoints[MONITOR_VIEW];
+      });
   }
-  ngAfterViewInit() {}
+
+  ngOnInit(): void {}
+
+  ngOnDestroy() {
+    this.layoutChangesSubscription.unsubscribe();
+  }
+
+  toggleCollapsed() {
+    this.isContentWidthFixed = false;
+  }
+
+  onSidenavClosedStart() {
+    this.isContentWidthFixed = false;
+  }
+
+  onSidenavOpenedChange(isOpened: boolean) {
+    this.isCollapsedWidthFixed = !this.isOver;
+  }
 }

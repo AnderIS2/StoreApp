@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header text-bg-primary mb-3">
+    <h5 style="">Usuarios</h5>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="button" class="btn btn-success button-margin" style="border-color: black; border-width: medium">
+        <i-tabler
+          class="routeIcon"
+          name="plus"
+          matListItemIcon
+        ></i-tabler>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of listUsers">
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}} {{user.secondName}}</td>
+        <td>{{user.firstLastName}} {{user.secondLastName}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button type="button" class="btn btn-primary button-margin">
+            <i-tabler
+              class="routeIcon"
+              name="eye-search"
+              matListItemIcon
+            ></i-tabler>
+          </button>
+          <button type="button" class="btn btn-warning button-margin">
+            <i-tabler
+              class="routeIcon"
+              name="edit"
+              matListItemIcon
+            ></i-tabler>
+          </button>
+          <button type="button" class="btn btn-danger button-margin">
+            <i-tabler
+            class="routeIcon"
+            name="trash"
+            matListItemIcon></i-tabler>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
