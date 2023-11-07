@@ -1,8 +1,7 @@
 <div class="card">
   <div class="card-header text-bg-primary mb-3">
-    <h5 style="">Usuarios</h5>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button type="button" class="btn btn-success button-margin" style="border-color: black; border-width: medium">
+    <div class="d-grid gap-2 d-flex justify-content-md-end">
+      <button style="margin-left: 30%" mat-raised-button color ="primary" (click)="OpenPopup()">
         <i-tabler
           class="routeIcon"
           name="plus"
@@ -10,6 +9,8 @@
         ></i-tabler>
       </button>
     </div>
+    <h5 style="">Usuarios</h5>
+
   </div>
   <div class="card-body">
     <table class="table table-striped table-bordered">
@@ -43,7 +44,7 @@
               matListItemIcon
             ></i-tabler>
           </button>
-          <button type="button" class="btn btn-danger button-margin">
+          <button (click)="eliminarUsuario(user.id)" type="button" class="btn btn-danger button-margin">
             <i-tabler
             class="routeIcon"
             name="trash"

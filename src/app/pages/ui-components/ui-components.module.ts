@@ -18,6 +18,7 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { PopupComponent } from './usuarios/popup/popup.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     AppMenuComponent,
     AppTooltipsComponent,
     UsuariosComponent,
+    PopupComponent
   ],
 })
 export class UicomponentsModule {}
