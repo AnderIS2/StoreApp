@@ -1,26 +1,56 @@
 <div class="card">
-  <div class="card-header text-bg-primary mb-3" style="align-content: center">
-    <h5>Pacientes</h5>
+  <div class="card-header text-bg-primary mb-3">
+    <div class="d-grid gap-2 d-flex justify-content-md-end">
+      <button style="margin-left: 30%" mat-raised-button color ="primary" (click)="OpenPopup()">
+        <i-tabler
+          class="routeIcon"
+          name="plus"
+          matListItemIcon
+        ></i-tabler>
+      </button>
+    </div>
+    <h5 style="">Usuarios</h5>
 
   </div>
   <div class="card-body">
-    <table class="table table-bordered">
+    <table class="table table-striped table-bordered">
       <thead>
       <tr>
-        <th scope="col">Id</th>
+        <th scope="col">Username</th>
         <th scope="col">Nombres</th>
         <th scope="col">Apellidos</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Sala</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Acciones</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of listUsers" >
-        <td [ngStyle]="{'background-color': changeRowColor(user.estado)}">{{user.id}}</td>
-        <td [ngStyle]="{'background-color': changeRowColor(user.estado)}">{{user.nombres}}</td>
-        <td [ngStyle]="{'background-color': changeRowColor(user.estado)}">{{user.apellidos}}</td>
-        <td [ngStyle]="{'background-color': changeRowColor(user.estado)}">{{user.estado}}</td>
-        <td [ngStyle]="{'background-color': changeRowColor(user.estado)}">{{user.sala}}</td>
+      <tr *ngFor="let user of listUsers">
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}} {{user.secondName}}</td>
+        <td>{{user.firstLastName}} {{user.secondLastName}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button type="button" class="btn btn-primary button-margin">
+            <i-tabler
+              class="routeIcon"
+              name="eye-search"
+              matListItemIcon
+            ></i-tabler>
+          </button>
+          <button type="button" class="btn btn-warning button-margin">
+            <i-tabler
+              class="routeIcon"
+              name="edit"
+              matListItemIcon
+            ></i-tabler>
+          </button>
+          <button (click)="eliminarUsuario(user.id)" type="button" class="btn btn-danger button-margin">
+            <i-tabler
+              class="routeIcon"
+              name="trash"
+              matListItemIcon></i-tabler>
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>

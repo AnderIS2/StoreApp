@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {UserModel} from "../../../domain/users/user.model";
 import {MatDialog} from "@angular/material/dialog";
+import {PopupComponent} from "./popup/popup.component";
 
 @Component({
   selector: 'app-usuarios',
@@ -22,20 +23,18 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-  changeRowColor(estado: string) : string {
-    if (estado == "ROJO") {
-      return 'red';
-    } else if (estado == 'AMARILLO') {
-      return 'yellow';
-    } else if (estado == 'VERDE') {
-      return 'green';
-    } else if (estado == 'AZUL') {
-      return 'blue';
-    } else if(estado == 'NARANJA'){
-      return 'orange';
-    }else {
-      return 'white';
-    }
+  OpenPopup() {
+    this.dialog.open(PopupComponent, {
+      width: '500px',
+      height: '520px'
+    })
+  }
+
+  eliminarUsuario(id: number): void {
+    this.userService.deleteUser(id).subscribe(data => {
+      console.log(data);
+      this.ngOnInit();
+    });
   }
 
 }
