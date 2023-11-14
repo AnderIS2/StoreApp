@@ -5,5 +5,6 @@ export interface UserModel {
   firstLastName: string;
   secondLastName: string;
   email:string;
+  age: number;
   username: string;
 }

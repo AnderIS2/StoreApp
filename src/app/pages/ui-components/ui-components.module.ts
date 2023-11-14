@@ -18,6 +18,10 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { TiendasComponent } from './tiendas/tiendas.component';
+import { PopupactualizarComponent } from './usuarios/popupactualizar/popupactualizar.component';
+import { PopupmostrarComponent } from './usuarios/popupmostrar/popupmostrar.component';
+import { FilterPipe } from './usuarios/pipes/filter.pipe';
 
 @NgModule({
   imports: [
@@ -35,7 +39,11 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     AppListsComponent,
     AppMenuComponent,
     AppTooltipsComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    TiendasComponent,
+    PopupactualizarComponent,
+    PopupmostrarComponent,
+    FilterPipe
   ],
 })
 export class UicomponentsModule {}

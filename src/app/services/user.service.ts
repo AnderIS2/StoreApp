@@ -7,8 +7,10 @@ import {Observable} from "rxjs";
 export class UserService{
 
   apiConsultUserUrl = 'http://localhost:8080/api/user/consult';
+  apiConsultByIdUserUrl = 'http://localhost:8080/api/user/consult/{id}';
   apiDeleteUserUrl = 'http://localhost:8080/api/user/delete';
   apiCreateUserUrl = 'http://localhost:8080/api/user/create';
+  apiUpdateUserUrl = 'http://localhost:8080/api/user/update';
 
   constructor(private httpCliente: HttpClient) {
   }
@@ -25,4 +27,11 @@ export class UserService{
     return this.httpCliente.post(this.apiCreateUserUrl, data);
   }
 
+  updateUser(id: number, data: any): Observable<any>{
+    return this.httpCliente.put(`${this.apiUpdateUserUrl}/${id}`, data);
+  }
+
+  getById(id: number): Observable<UserModel>{
+    return this.httpCliente.get<UserModel>(`${this.apiConsultByIdUserUrl}/${id}`);
+  }
 }

@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "./popup/popup.component";
 import {colors} from "@angular/cli/src/utilities/color";
 import {PopupactualizarComponent} from "./popupactualizar/popupactualizar.component";
+import {PopupmostrarComponent} from "./popupmostrar/popupmostrar.component";
 
 @Component({
   selector: 'app-usuarios',
@@ -17,6 +18,8 @@ export class UsuariosComponent implements OnInit {
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
+
+  filterUsers = '';
 
   ngOnInit(): void {
     this.userService.getAllUser().subscribe(data => {
@@ -38,16 +41,15 @@ export class UsuariosComponent implements OnInit {
       height: '520px',
     })
   }
+  OpenPopupMostrar() {
+    this.dialog.open(PopupmostrarComponent, {
+      width: '500px',
+      height: '520px',
+    })
+  }
 
   eliminarUsuario(id: number): void {
     this.userService.deleteUser(id).subscribe(data => {
-      console.log(data);
-      this.ngOnInit();
-    });
-  }
-
-  consultarUsuario(id: number): void {
-    this.userService.getById(id).subscribe(data => {
       console.log(data);
       this.ngOnInit();
     });

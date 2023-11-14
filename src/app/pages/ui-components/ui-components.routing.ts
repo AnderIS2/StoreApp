@@ -7,6 +7,7 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
+import {TiendasComponent} from "./tiendas/tiendas.component";
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -15,6 +16,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'usuarios',
         component: UsuariosComponent,
+      },
+      {
+        path: 'tiendas',
+        component: TiendasComponent,
       },
       {
         path: 'badge',

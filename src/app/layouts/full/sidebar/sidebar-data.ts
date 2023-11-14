@@ -10,6 +10,11 @@ export const navItems: NavItem[] = [
     route: '/ui-components/usuarios',
   },
   {
+    displayName: 'Tiendas',
+    iconName: 'building-store',
+    route: '/ui-components/tiendas',
+  },
+  {
     displayName: 'Badge',
     iconName: 'rosette',
     route: '/ui-components/badge',
