@@ -23,6 +23,7 @@ export class PopupComponent {
       });
     }
 
+
   closePopup(){
       this.ref.close();
     }
@@ -44,7 +45,7 @@ export class PopupComponent {
     age: [''],
     username: [''],
     password: ['']
-  });
+  })
 
 
 
