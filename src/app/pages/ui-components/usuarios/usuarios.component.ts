@@ -38,7 +38,7 @@ export class UsuariosComponent implements OnInit {
   openPopupUpdate(data: any) {
     this.dialog.open(PopupactualizarComponent, {
       width: '500px',
-      height: '520px',
+      height: '514px',
       data: {listUsersUpdate : data}
     })
     }

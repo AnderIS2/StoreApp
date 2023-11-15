@@ -46,4 +46,5 @@ export class PopupactualizarComponent {
     username: [''],
     password: ['']
   })
+  protected readonly close = close;
 }
