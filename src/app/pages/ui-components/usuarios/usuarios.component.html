@@ -1,7 +1,7 @@
 <div class="card" xmlns:style="http://www.w3.org/1999/xhtml">
   <div class="card-header mb-3"  >
     <div class="d-grid gap-2 d-flex">
-      <button style="margin-right: 30%; border-color: white; color:white; background: rgb(244,16,16); border-radius: 7px;" (click)="OpenPopup()">
+      <button style="margin-right: 30%; border-color: white; color:white; background: rgb(244,16,16); border-radius: 7px;" (click)="openPopup()">
         <i-tabler
           class="routeIcon"
           name="plus"
@@ -34,14 +34,14 @@
         <td>{{user.firstLastName}} {{user.secondLastName}}</td>
         <td>{{user.email}}</td>
         <td>
-          <button type="button" class="btn btn-primary button-margin" (click)="ConsultarUsuario(user.id)">
+          <button type="button" class="btn btn-primary button-margin" (click)="consultarUsuario(user.id)">
             <i-tabler
               class="routeIcon"
               name="eye-search"
               matListItemIcon
             ></i-tabler>
           </button>
-          <button type="button" class="btn btn-warning button-margin" (click)="OpenPopupUpdate(user.id)">
+          <button type="button" class="btn btn-warning button-margin" (click)="actualizarUsuario(user.id)">
             <i-tabler
               class="routeIcon"
               name="edit"

@@ -14,7 +14,6 @@ import {PopupmostrarComponent} from "./popupmostrar/popupmostrar.component";
 export class UsuariosComponent implements OnInit {
 
   listUsers: UserModel[] = [];
-  listUsersMostrar: UserModel[] = [];
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
@@ -29,23 +28,22 @@ export class UsuariosComponent implements OnInit {
   }
 
 
-  OpenPopup() {
+  openPopup() {
     this.dialog.open(PopupComponent, {
       width: '500px',
       height: '520px',
     })
   }
 
-  OpenPopupUpdate(id: number) {
+  openPopupUpdate(data: any) {
     this.dialog.open(PopupactualizarComponent, {
       width: '500px',
       height: '520px',
+      data: {listUsersUpdate : data}
     })
     }
 
-
-
-  OpenPopupMostrar(data: any) {
+  openPopupMostrar(data: any) {
     this.dialog.open(PopupmostrarComponent, {
       width: '500px',
       height: '470px',
@@ -60,12 +58,18 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-  ConsultarUsuario(id :number) :void{
+  consultarUsuario(id :number) :void{
     this.userService.getById(id).subscribe(data => {
-      this.OpenPopupMostrar(data);
+      this.openPopupMostrar(data);
       console.log(data);
       this.ngOnInit();
   });
+  }
+  actualizarUsuario(id:number): void {
+    this.userService.getById(id).subscribe(data => {
+      this.openPopupUpdate(data);
+      console.log(data);
+    });
   }
 
   rowColor: string ="background: linear-gradient(153deg, rgba(244,16,16,1) 0%, rgba(255,0,104,1) 61%, rgba(57,10,185,1) 100%); color: white; ";

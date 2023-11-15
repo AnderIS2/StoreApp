@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {UserModel} from "../../../../domain/users/user.model";
 import {UserService} from "../../../../services/user.service";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder} from "@angular/forms";
 
 @Component({
@@ -11,23 +11,24 @@ import {FormBuilder} from "@angular/forms";
 })
 export class PopupactualizarComponent {
 
-  listUsers: UserModel[] = [];
+  listUsersUpdate: any;
 
-  constructor(private userService: UserService, private ref: MatDialogRef<PopupactualizarComponent>, private buildr: FormBuilder) {
+  constructor(private userService: UserService, private ref: MatDialogRef<PopupactualizarComponent>, private buildr: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.listUsersUpdate = data.listUsersUpdate;
   }
 
-  ngOnInit(): void {
-    this.userService.getAllUser().subscribe(data => {
+
+  ngOnInit(id: number): void {
+    this.userService.getById(id).subscribe(data => {
       console.log(data);
-      this.listUsers = data;
+      this.listUsersUpdate = data;
     });
   }
-
   updateUser(id:number): void {
     this.userService.updateUser(id, this.myformupdate.value).subscribe(data => {
       this.closePopupUpdate();
       console.log(data);
-      this.ngOnInit();
+      this.ngOnInit(id);
     });
   }
 

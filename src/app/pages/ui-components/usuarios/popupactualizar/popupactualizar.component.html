@@ -1,5 +1,5 @@
 
-<form *ngFor="let user of listUsers" [formGroup]="myformupdate" (ngSubmit)="updateUser(user.id)" class="row g-3" style="margin: 1%">
+<form *ngFor="let user of listUsersUpdate" [formGroup]="myformupdate" (ngSubmit)="updateUser(user.id)" class="row g-3" style="margin: 1%">
     <h1 align="center">Actualizar Usuario</h1>
     <div class="col-md-6">
         <label for="inputFirstName" class="form-label" >Nombres</label>
