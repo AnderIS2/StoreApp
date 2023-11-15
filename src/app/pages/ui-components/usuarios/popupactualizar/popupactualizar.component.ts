@@ -12,6 +12,7 @@ import {FormBuilder} from "@angular/forms";
 export class PopupactualizarComponent {
 
   listUsers: UserModel[] = [];
+
   constructor(private userService: UserService, private ref: MatDialogRef<PopupactualizarComponent>, private buildr: FormBuilder) {
   }
 

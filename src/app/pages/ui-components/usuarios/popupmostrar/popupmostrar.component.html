@@ -1,1 +1,49 @@
-<button (click)="closePopupMostrar()"> Cerrar</button>
+<div class="card" *ngFor="let user of listUsersMostrar">
+  <div class="card-header mb-3"  >
+      <h3 align="center">Datos de {{user.firstName}}</h3>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      </thead>
+      <tbody>
+      <tr>
+        <td [style]="parameterStyle">ID</td>
+        <td [style]="infoStyle">{{user.id}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Username</td>
+        <td [style]="infoStyle">{{user.username}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Primer Nombre</td>
+        <td [style]="infoStyle">{{user.firstName}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Segundo Nombre</td>
+        <td [style]="infoStyle">{{user.secondName}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Primer Apellido</td>
+        <td [style]="infoStyle">{{user.firstLastName}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Segundo Apellido</td>
+        <td [style]="infoStyle">{{user.secondLastName}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Correo</td>
+        <td [style]="infoStyle">{{user.email}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Edad</td>
+        <td [style]="infoStyle">{{user.age}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="col-12" align="center">
+      <button class="btn btn-danger" (click)="closePopupMostrar()">Cerrar</button>
+    </div>
+
+  </div>
+</div>

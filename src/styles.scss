@@ -4,3 +4,9 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+.card-header{
+  background: rgb(244,16,16);
+  background: linear-gradient(153deg, rgba(244,16,16,1) 0%, rgba(255,0,104,1) 61%, rgba(57,10,185,1) 100%);
+  color: white;
+}

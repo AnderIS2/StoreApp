@@ -9,7 +9,7 @@
         ></i-tabler>
       </button>
     </div>
-    <h5 align="center" style=" font-size: xxx-large; color: #e6fffa">Usuarios</h5>
+    <h5 align="center" style=" font-size: xxx-large">Usuarios</h5>
     <div class="form-group">
       <input type="text" class="form-control" name="filterUser" placeholder="Filtrar..." [(ngModel)]="filterUsers">
     </div>
@@ -28,19 +28,20 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of listUsers | filter:filterUsers">
+
         <td>{{user.username}}</td>
         <td>{{user.firstName}} {{user.secondName}}</td>
         <td>{{user.firstLastName}} {{user.secondLastName}}</td>
         <td>{{user.email}}</td>
         <td>
-          <button type="button" class="btn btn-primary button-margin" (click)="OpenPopupMostrar()">
+          <button type="button" class="btn btn-primary button-margin" (click)="ConsultarUsuario(user.id)">
             <i-tabler
               class="routeIcon"
               name="eye-search"
               matListItemIcon
             ></i-tabler>
           </button>
-          <button type="button" class="btn btn-warning button-margin" (click)="OpenPopupUpdate()">
+          <button type="button" class="btn btn-warning button-margin" (click)="OpenPopupUpdate(user.id)">
             <i-tabler
               class="routeIcon"
               name="edit"

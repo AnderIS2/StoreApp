@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {UserModel} from "../../../../domain/users/user.model";
 import {UserService} from "../../../../services/user.service";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-popupmostrar',
@@ -10,20 +10,18 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class PopupmostrarComponent {
 
-  listUsers: UserModel[] = [];
-  constructor(private userService: UserService, private ref: MatDialogRef<PopupmostrarComponent>) {
+  listUsersMostrar: any;
+
+  constructor( private ref: MatDialogRef<PopupmostrarComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.listUsersMostrar = data.listUsersMostrar;
   }
 
-  ngOnInit(): void {
-    this.userService.getAllUser().subscribe(data => {
-      console.log(data);
-      this.listUsers = data;
-    });
-  }
 
   closePopupMostrar() {
     this.ref.close();
   }
 
+  parameterStyle: string ="font-size: 22px; font-weight: bold; color: #000000; font-family: 'Roboto', sans-serif;";
+  infoStyle: string ="font-size: 20px; color: #darkgrey; font-family: 'Roboto', sans-serif; justify-content: right";
 
 }

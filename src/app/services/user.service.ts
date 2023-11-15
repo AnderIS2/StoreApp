@@ -2,12 +2,13 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {UserModel} from "../domain/users/user.model";
 import {Observable} from "rxjs";
+import {UsuariosComponent} from "../pages/ui-components/usuarios/usuarios.component";
 
 @Injectable({ providedIn: 'root' })
 export class UserService{
 
   apiConsultUserUrl = 'http://localhost:8080/api/user/consult';
-  apiConsultByIdUserUrl = 'http://localhost:8080/api/user/consult/{id}';
+  apiConsultByIdUserUrl = 'http://localhost:8080/api/user/getuser/';
   apiDeleteUserUrl = 'http://localhost:8080/api/user/delete';
   apiCreateUserUrl = 'http://localhost:8080/api/user/create';
   apiUpdateUserUrl = 'http://localhost:8080/api/user/update';
@@ -31,7 +32,7 @@ export class UserService{
     return this.httpCliente.put(`${this.apiUpdateUserUrl}/${id}`, data);
   }
 
-  getById(id: number): Observable<UserModel>{
-    return this.httpCliente.get<UserModel>(`${this.apiConsultByIdUserUrl}/${id}`);
+  getById(id: number): Observable<UserModel[]>{
+    return this.httpCliente.get<UserModel[]>(this.apiConsultByIdUserUrl+id);
   }
 }
