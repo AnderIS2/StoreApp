@@ -1,5 +1,5 @@
 <div class="card" xmlns:style="http://www.w3.org/1999/xhtml">
-  <div class="card-header mb-3"  >
+  <div class="card-header mb-2"  >
     <div class="d-grid gap-2 d-flex">
       <button style="margin-right: 30%; border-color: white; color:white; background: rgb(244,16,16); border-radius: 7px;" (click)="openPopup()">
         <i-tabler
@@ -10,8 +10,14 @@
       </button>
     </div>
     <h5 align="center" style=" font-size: xxx-large">Usuarios</h5>
-    <div class="form-group">
-      <input type="text" class="form-control" name="filterUser" placeholder="Filtrar..." [(ngModel)]="filterUsers">
+    <div class="form-group" style="display: flex; gap: 8px;">
+      <input style="width: 200px; margin-right: 60%" type="text" class="form-control" name="filterUser" placeholder="Filtrar..." [(ngModel)]="filterUsers">
+      <select style="width: 200px" class="form-select" aria-label="Filtrar por..." [(ngModel)]="selectedFilter">
+        <option value="username">Username</option>
+        <option value="firstName">Nombres</option>
+        <option value="firstLastName">Apellidos</option>
+        <option value="email">Correo</option>
+      </select>
     </div>
   </div>
 
@@ -27,7 +33,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of listUsers | filter:filterUsers">
+      <tr *ngFor="let user of listUsers | filter:selectedFilter: filterUsers">
 
         <td>{{user.username}}</td>
         <td>{{user.firstName}} {{user.secondName}}</td>

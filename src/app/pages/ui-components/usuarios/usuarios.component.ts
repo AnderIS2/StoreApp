@@ -19,6 +19,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   filterUsers = '';
+  selectedFilter = ''
 
   ngOnInit(): void {
     this.userService.getAllUser().subscribe(data => {
