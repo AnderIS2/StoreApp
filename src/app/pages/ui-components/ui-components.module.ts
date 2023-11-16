@@ -22,6 +22,12 @@ import { TiendasComponent } from './tiendas/tiendas.component';
 import { PopupactualizarComponent } from './usuarios/popupactualizar/popupactualizar.component';
 import { PopupmostrarComponent } from './usuarios/popupmostrar/popupmostrar.component';
 import { FilterPipe } from './usuarios/pipes/filter.pipe';
+import { PopupeliminarComponent } from './usuarios/popupeliminar/popupeliminar.component';
+import {PopuptiendaComponent} from "./tiendas/popuptienda/popuptienda.component";
+import {PopupmostrartiendaComponent} from "./tiendas/popupmostrartienda/popupmostrartienda.component";
+import {PopupactualizartiendaComponent} from "./tiendas/popupactualizartienda/popupactualizartienda.component";
+import {PopupeliminartiendaComponent} from "./tiendas/popupeliminartienda/popupeliminartienda.component";
+import {FiltertiendaPipe} from "./tiendas/pipestienda/filtertienda.pipe";
 
 @NgModule({
   imports: [
@@ -43,7 +49,13 @@ import { FilterPipe } from './usuarios/pipes/filter.pipe';
     TiendasComponent,
     PopupactualizarComponent,
     PopupmostrarComponent,
-    FilterPipe
-  ],
+    FilterPipe,
+    PopupeliminarComponent,
+    PopuptiendaComponent,
+    PopupmostrartiendaComponent,
+    PopupactualizartiendaComponent,
+    PopupeliminartiendaComponent,
+    FiltertiendaPipe
+  ]
 })
 export class UicomponentsModule {}

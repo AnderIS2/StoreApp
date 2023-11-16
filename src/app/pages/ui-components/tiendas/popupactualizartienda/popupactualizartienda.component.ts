@@ -5,16 +5,16 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-popupactualizar',
-  templateUrl: './popupactualizar.component.html',
-  styleUrls: ['./popupactualizar.component.scss']
+  templateUrl: './popupactualizartienda.component.html',
+  styleUrls: ['./popupactualizartienda.component.scss']
 })
-export class PopupactualizarComponent {
+export class PopupactualizartiendaComponent {
 
   contactForm!: FormGroup;
 
   listUsers: any;
 
-  constructor(private userService: UserService, private ref: MatDialogRef<PopupactualizarComponent>, private buildr: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private userService: UserService, private ref: MatDialogRef<PopupactualizartiendaComponent>, private buildr: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.listUsers = data.listUsers;
   }
 

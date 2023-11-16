@@ -4,6 +4,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {UserModel} from "../../../../domain/users/user.model";
 import {UserService} from "../../../../services/user.service";
 import {Form, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-popup',
@@ -21,7 +22,7 @@ export class PopupComponent {
     ngOnInit(): void {
       this.contactForm = this.myform;
       this.userService.getAllUser().subscribe(data => {
-        console.log(data);
+        console.log(data)
         this.listUsers = data;
       });
     }
@@ -36,6 +37,10 @@ export class PopupComponent {
       this.closePopup();
       console.log(data);
       this.ngOnInit();
+    });
+    this.userService.getAllUser().subscribe(data => {
+      console.log(data);
+      this.listUsers = data;
     });
   }
 

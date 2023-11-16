@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "./popup/popup.component";
 import {PopupactualizarComponent} from "./popupactualizar/popupactualizar.component";
 import {PopupmostrarComponent} from "./popupmostrar/popupmostrar.component";
+import {PopupeliminarComponent} from "./popupeliminar/popupeliminar.component";
 
 @Component({
   selector: 'app-usuarios',
@@ -28,11 +29,17 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-
   openPopup() {
     this.dialog.open(PopupComponent, {
       width: '500px',
       height: '528px',
+    })
+  }
+  openPopupEliminar(data: any) {
+    this.dialog.open(PopupeliminarComponent, {
+      width: '400px',
+      height: '135px',
+      data: {listUsers : data}
     })
   }
 
@@ -53,7 +60,8 @@ export class UsuariosComponent implements OnInit {
   }
 
   eliminarUsuario(id: number): void {
-    this.userService.deleteUser(id).subscribe(data => {
+    this.userService.getById(id).subscribe(data => {
+      this.openPopupEliminar(data);
       console.log(data);
       this.ngOnInit();
     });

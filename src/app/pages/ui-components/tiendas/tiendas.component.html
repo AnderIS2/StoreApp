@@ -1,1 +1,62 @@
-p<p>tiendas works!</p>
+<div class="card" xmlns:style="http://www.w3.org/1999/xhtml">
+  <div class="card-header mb-2"  >
+    <div class="d-grid gap-2 d-flex">
+      <button style="margin-right: 30%; border-color: white; color:white; background: rgb(244,16,16); border-radius: 7px;" (click)="openPopup()">
+        <i-tabler
+          class="routeIcon"
+          name="plus"
+          matListItemIcon
+        ></i-tabler>
+      </button>
+    </div>
+    <h5 align="center" style=" font-size: xxx-large">Tiendas</h5>
+    <div class="form-group" style="display: flex; gap: 8px;">
+      <input style="width: 200px; margin-right: 60%" type="text" class="form-control" name="filterUser" placeholder="Filtrar..." [(ngModel)]="filterUsers">
+    </div>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-striped-columns table-bordered">
+      <thead>
+      <tr>
+        <th [style]="rowColor" align="center" scope="col">Id</th>
+        <th [style]="rowColor" align="center" scope="col">Nombre</th>
+        <th [style]="rowColor" align="center" scope="col">Dirección</th>
+        <th [style]="rowColor" align="center" scope="col">Email</th>
+        <th [style]="rowColor" align="center" scope="col">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let store of listStores | filter: filterUsers">
+
+        <td>{{store.id}}</td>
+        <td>{{store.name}}</td>
+        <td>{{store.address}}</td>
+        <td>{{store.email}}</td>
+        <td>
+          <button type="button" class="btn btn-primary button-margin" (click)="consultarUsuario(store.id)">
+            <i-tabler
+              class="routeIcon"
+              name="eye-search"
+              matListItemIcon
+            ></i-tabler>
+          </button>
+          <button type="button" class="btn btn-warning button-margin" (click)="actualizarUsuario(store.id)">
+            <i-tabler
+              class="routeIcon"
+              name="edit"
+              matListItemIcon
+            ></i-tabler>
+          </button>
+          <button (click)="eliminarUsuario(store.id)" type="button" class="btn btn-danger button-margin">
+            <i-tabler
+              class="routeIcon"
+              name="trash"
+              matListItemIcon></i-tabler>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'filter'
 })
-export class FilterPipe implements PipeTransform {
+export class FiltertiendaPipe implements PipeTransform {
 
   transform(value: any, filterValue: string): any {
     if (filterValue === null || filterValue === '' || filterValue === undefined) {

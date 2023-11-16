@@ -1,0 +1,11 @@
+<div *ngFor="let user of listUsers" class="card">
+  <div class="card-header">
+    <h2>¿Está seguro?</h2>
+  </div>
+  <div class ="card-body">
+    <div  class="col-12" align="center">
+      <button type="submit" class="btn btn-danger" (click)="eliminar(user.id)">Eliminar</button>
+      <button type="submit" class="btn btn-primary" (click)="closePopupEliminar()">Cerrar</button>
+    </div>
+  </div>
+</div>

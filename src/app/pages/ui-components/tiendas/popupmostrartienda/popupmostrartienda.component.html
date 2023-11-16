@@ -1,0 +1,37 @@
+<div class="card" *ngFor="let store of listStore">
+  <div class="card-header mb-3"  >
+      <h1 align="center">Datos de {{store.name}}</h1>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      </thead>
+      <tbody>
+      <tr>
+        <td [style]="parameterStyle">ID</td>
+        <td [style]="infoStyle">{{store.id}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Nombre</td>
+        <td [style]="infoStyle">{{store.name}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Dirección</td>
+        <td [style]="infoStyle">{{store.address}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Telefono</td>
+        <td [style]="infoStyle">{{store.phone}}</td>
+      </tr>
+      <tr>
+        <td [style]="parameterStyle">Email</td>
+        <td [style]="infoStyle">{{store.email}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="col-12" align="center">
+      <button class="btn btn-danger" (click)="closePopupMostrar()">Cerrar</button>
+    </div>
+
+  </div>
+</div>
