@@ -32,14 +32,14 @@ export class UsuariosComponent implements OnInit {
   openPopup() {
     this.dialog.open(PopupComponent, {
       width: '500px',
-      height: '520px',
+      height: '528px',
     })
   }
 
   openPopupUpdate(data: any) {
     this.dialog.open(PopupactualizarComponent, {
       width: '500px',
-      height: '514px',
+      height: '528px',
       data: {listUsersUpdate : data}
     })
     }
@@ -47,7 +47,7 @@ export class UsuariosComponent implements OnInit {
   openPopupMostrar(data: any) {
     this.dialog.open(PopupmostrarComponent, {
       width: '500px',
-      height: '470px',
+      height: '484px',
       data: {listUsersMostrar : data}
     })
   }

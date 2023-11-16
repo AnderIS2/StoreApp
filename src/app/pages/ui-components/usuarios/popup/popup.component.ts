@@ -3,7 +3,7 @@ import {MatHeaderCellDef} from "@angular/material/table";
 import {MatDialogRef} from "@angular/material/dialog";
 import {UserModel} from "../../../../domain/users/user.model";
 import {UserService} from "../../../../services/user.service";
-import {Form, FormBuilder} from "@angular/forms";
+import {Form, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-popup',
@@ -12,11 +12,14 @@ import {Form, FormBuilder} from "@angular/forms";
 })
 export class PopupComponent {
 
+  contactForm!: FormGroup;
+
   listUsers: UserModel[] = [];
 
     constructor(private userService: UserService, private ref:MatDialogRef<PopupComponent>, private buildr:FormBuilder) { }
 
     ngOnInit(): void {
+      this.contactForm = this.myform;
       this.userService.getAllUser().subscribe(data => {
         console.log(data);
         this.listUsers = data;
@@ -37,18 +40,18 @@ export class PopupComponent {
   }
 
   myform = this.buildr.group({
-    firstName: [''],
+    firstName: ['', Validators.required],
     secondName: [''],
-    firstLastName: [''],
+    firstLastName: ['', Validators.required],
     secondLastName: [''],
-    email: [''],
-    age: [''],
-    username: [''],
-    password: ['']
+    email: ['', Validators.required],
+    age: ['', Validators.required],
+    username: ['', Validators.required],
+    password: ['', Validators.required]
   })
 
 
-
+  protected readonly close = close;
 
 
 

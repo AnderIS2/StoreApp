@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {UserModel} from "../../../../domain/users/user.model";
 import {UserService} from "../../../../services/user.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-popupactualizar',
@@ -10,6 +10,8 @@ import {FormBuilder} from "@angular/forms";
   styleUrls: ['./popupactualizar.component.scss']
 })
 export class PopupactualizarComponent {
+
+  contactForm!: FormGroup;
 
   listUsersUpdate: any;
 
@@ -19,6 +21,7 @@ export class PopupactualizarComponent {
 
 
   ngOnInit(id: number): void {
+    this.contactForm = this.myformupdate;
     this.userService.getById(id).subscribe(data => {
       console.log(data);
       this.listUsersUpdate = data;
@@ -37,14 +40,14 @@ export class PopupactualizarComponent {
   }
 
   myformupdate = this.buildr.group({
-    firstName: [''],
+    firstName: ['', Validators.required],
     secondName: [''],
-    firstLastName: [''],
+    firstLastName: ['', Validators.required],
     secondLastName: [''],
-    email: [''],
-    age: [''],
-    username: [''],
-    password: ['']
+    email: ['', Validators.required],
+    age: ['', Validators.required],
+    username: ['', Validators.required],
+    password: ['', Validators.required]
   })
   protected readonly close = close;
 }
